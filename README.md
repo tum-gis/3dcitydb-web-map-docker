@@ -79,7 +79,7 @@ docker run -dit --name 3dwebmap-container -p 80:8000 \
 
 The data is now available in the data listing (e.g. `http://myDockerHost/data/`). Use your Browser's *Copy Link Address* feature to copy the URLs required in the 3D web client.
 
-![Data listing view](images/data-listing-01.png)
+![Data listing view](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/images/data-listing-01.png)
 
 ## How to build
 To build a 3DCityDB-Web-Map-Client Docker image from the Dockerfile in this repo yourself you need to download the source code from this repo and run the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Follow the step below to build a 3DCityDB-Web-Map-Client Docker image or use the [`build.sh`](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/build.sh) script.
