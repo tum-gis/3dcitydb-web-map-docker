@@ -43,17 +43,15 @@ The key features and functionalities of the 3DCityDB-Web-Map-Client is summarize
 This section describes how to get a 3DCityDB-Web-Map-Client container running as quick and easy as possible.
 1. Install Docker on your system.
    This step is mandatory. Downloads and detailed instructions for various operating systems can be found here: [https://docs.docker.com/install/](https://docs.docker.com/install/)
-2. Run the 3D web client Docker images using [`docker run`](https://docs.docker.com/engine/reference/commandline/run/). Use the `-p <host port:docker port>` switch to specify on which port the 3D web client will listen on your host system. For instance, use `-p 80:8000` if you want to access the 3D web client on the default *http* port.
+2. Run the 3D web client Docker images using [`docker run`](https://docs.docker.com/engine/reference/commandline/run/). Use the `-p <host port:docker port>` switch to specify on which port the 3D web client will listen on your host system. For instance, use `-p 80:8000` if you want to access the 3D web client on the default *http port=80*.
   ```bash
   docker run -dit --name 3dwebmap-container -p 80:8000 tumgis/3dcitydb-web-map
   ```
-3. As soon as the container has started, the 3D web client will be available on your Docker host with any common Web Browser. If you run the container locally with above port settings, the laning page is abailable here:  
+3. As soon as the container has started, the 3D web client will be available on your Docker host with any common Web Browser. If you run the container locally with above port settings, the landing page is available here:  
   [http://localhost/](http://localhost/) or [http://127.0.0.1/](http://127.0.0.1/)
 
-Read further below for more examples and to learn how to *host data* with the 3DCityDB-Web-Map-Client Docker image.
-   
 ## Hosting data AND the 3D web client
-The 3DCityDB-Web-Map-Client Docker image allows you to host the data you want to use in the client. All data, that is visible to the `/var/www/data/` directory of a running 3D web client container will be listed in the *data listing* and can be used in the client to create web visualizations. The best way to make data available to that directory is by using a so called [bind mount](https://docs.docker.com/storage/bind-mounts/) where a *host directory* is mapped to a *container directory*. Checkout this overview on Docker's [data storge and persistence](https://github.com/tum-gis/3dcitydb-docker-postgis#data-storage-and-persistence) for more insight on *bind mounts* and possible other options.
+The 3DCityDB-Web-Map-Client Docker image allows you to host the data you want to use in the client. All data, that is visible to the `/var/www/data/` directory of a running 3D web client container will be listed in the *data listing* and can be used in the client to create web visualizations. The best way to make data available to that directory is by using a so called [bind mount](https://docs.docker.com/storage/bind-mounts/) where a *host directory* is mapped to a *container directory*. Checkout this overview on Docker's [data storge and persistence](https://github.com/tum-gis/3dcitydb-docker-postgis#data-storage-and-persistence) for more insight on *bind mounts* and other possible options.
 
 The following example will explain how to host the 3DCityDB-Web-Map-Client and an example data set.
 We assume you have created some *glTF* data for testing using the [3DCityDB Importer/Exporter](https://www.3dcitydb.org/3dcitydb/d3dimpexp/). If this is not the case, a test dataset is available [here](https://github.com/3dcitydb/3dcitydb-web-map/tree/master/examples/glTFRailwaySceneLoD3Example/Railway_Scene_LoD3). For this example we assume the test dataset is stored at `/home/docker/data/` on your docker host:
@@ -66,7 +64,7 @@ $ ls -lh /home/docker/data/
 drwxr-xr-x 3 root root 4.0K Mar 15 18:36 Tiles
 
 ```
-To start a 3DCityDB-Web-Map-Client Docker container and *bind mount* `/home/docker/data/` to `/var/www/data/` in the container run:
+To start a 3DCityDB-Web-Map-Client Docker container and *bind mount* the `/home/docker/data/` host directory to the `/var/www/data/` container directory run:
 
 ```bash
 docker run -dit --name 3dwebmap-container -p 80:8000 \
@@ -82,14 +80,14 @@ The data is now available in the data listing (e.g. `http://myDockerHost/data/`)
 ![Data listing view](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/images/data-listing-01.png)
 
 ## How to build
-To build a 3DCityDB-Web-Map-Client Docker image from the Dockerfile in this repo yourself you need to download the source code from this repo and run the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Follow the step below to build a 3DCityDB-Web-Map-Client Docker image or use the [`build.sh`](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/build.sh) script.
+To build a 3DCityDB-Web-Map-Client Docker image from the Dockerfile in this repo you need to download the source code from this repo and run the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Follow the step below to build a 3DCityDB-Web-Map-Client Docker image or use the [`build.sh`](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/build.sh) script.
 ```bash
-# 1. Download source code using git. 
-git clone https://github.com/tum-gis/3dcitydb-wfs-docker.git
-# 2. Change to the source folder you just cloned.
-cd 3dcitydb-wfs-docker
-# 3. Build a docker image tagged as 3dcitydb-wfs.
-docker build -t tumgis/3dcitydb-wfs .
+# 1. Download source code using git
+git clone https://github.com/tum-gis/3dcitydb-web-map-docker
+# 2. Change to the source folder you just cloned
+cd 3dcitydb-web-map-docker
+# 3. Build a docker image tagged as e.g. 3dcitydb-web-map
+docker build -t tumgis/3dcitydb-web-map .
 ```
 
 If the build succeeds, you are ready to run the image as described above. To list all locally available images run [`docker images`](https://docs.docker.com/engine/reference/commandline/images/). 
