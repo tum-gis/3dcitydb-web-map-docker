@@ -13,7 +13,7 @@ This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web
 Use `docker pull tumgis/3dcitydb-web-map:TAG` to download the latest version of the image with the specified `TAG` to your system.
 
 #### More 3DCityDB Docker Images
-Besides the Docker images form this repo images for the *3D City Database* and the *3D City Database Web Feature Service (WFS)* are available:
+Check out the Docker images for the *3D City Database* and the *3D City Database Web Feature Service (WFS)* too:
 * [3DCityDB Docker image](https://github.com/tum-gis/3dcitydb-postgis-docker/)  
 * [3DCityDB Web Feature Service (WFS) image](https://github.com/tum-gis/3dcitydb-wfs-docker/)
 
