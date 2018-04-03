@@ -149,6 +149,11 @@ where:
    net use <disk_drive>: \\<SERVER>\smb_shared
    ```
    where the `<disk_drive>` can be an arbitrary unoccupied letter (e.g. `R`) and `SERVER` is the name or IP address of the host machine, where the container is being hosted. The latter can be found using the command `ifconfig` or `ipconfig`.
+   
+   Once the connection has been established, open the shared folder in Windows Explorer and create a new text file `Test.txt`. This text file should now also be visible on the web client (e.g. `http://myDockerHost/data/`) as shown below:
+   <p align="center">
+    	<img src="/images/SambaTest.png" width="50%" />
+   </p>
 
    + In Linux:
    ```bash
