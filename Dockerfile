@@ -87,4 +87,5 @@ EXPOSE  8000 137/udp 138/udp 139 445
 #HEALTHCHECK --interval=60s --timeout=15s \
 #             CMD smbclient -L '\\localhost\' -U 'guest%' -m SMB3
 
-ENTRYPOINT [ "samba.sh" ]
+RUN     chmod +x /usr/bin/samba.sh
+ENTRYPOINT [ "/usr/bin/samba.sh" ]
