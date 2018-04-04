@@ -85,9 +85,8 @@ The 3DCityDB-Web-Map-Client Docker image also allows sharing data between differ
 To enable Samba:
 ```bash
 docker run -dit --name 3dwebmap-container -p 80:8000 -p 139:139 -p 445:445 \
-   -v /home/docker/data/:/var/www/data/ \
-tumgis/3dcitydb-web-map \
-	-u "username;password!" \
+   -v /home/docker/data/:/var/www/data/ tumgis/3dcitydb-web-map \
+   -u "username;password!" \
    -s "smb_shared;/var/www/data/;yes;no;yes;all;username;username;comment"
 ```
 where:
