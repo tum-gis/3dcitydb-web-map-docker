@@ -3,6 +3,7 @@ This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web
 
 #### Special features
 * *Landing page* and *data listing* for convenient 3D web client project creation
+* *Sharing data* across multiple platforms (Windows, Linux, MacOS, etc.) using *Samba*
 
 #### Image versions/tags
 * **latest** - Latest stable version based on latest version of the 3D web client. Built from [master](https://github.com/tum-gis/3dcitydb-web-map-docker/tree/master) branch.
