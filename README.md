@@ -3,6 +3,7 @@ This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web
 
 #### Special features
 * *Landing page* and *data listing* for convenient 3D web client project creation
+* *Sharing data* across multiple platforms (Windows, Linux, MacOS, etc.) using *Samba*
 
 #### Image versions/tags
 * **latest** - Latest stable version based on latest version of the 3D web client. Built from [master](https://github.com/tum-gis/3dcitydb-web-map-docker/tree/master) branch.
@@ -78,6 +79,120 @@ docker run -dit --name 3dwebmap-container -p 80:8000 \
 The data is now available in the data listing (e.g. `http://myDockerHost/data/`). Use your Browser's *Copy Link Address* feature to copy the URLs required in the 3D web client.
 
 ![Data listing view](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/images/data-listing-01.png)
+
+## Sharing data across multiple platforms (Windows, MacOS, Linux, etc.)
+The 3DCityDB-Web-Map-Client Docker image also allows sharing data between different machines and operating systems such as Windows, MacOS, Linux, etc. using [Samba](https://en.wikipedia.org/wiki/Samba_(software)), which is a free software re-implementation of the SMB/CIFS networking protocol. Samba provides file and print services for various Microsoft Windows clients and can integrate with a Microsoft Windows Server domain, either as a Domain Controller (DC) or as a domain member.
+
+To enable Samba:
+```bash
+docker run -dit --name 3dwebmap-container -p 80:8000 -p 139:139 -p 445:445 \
+   -v /home/docker/data/:/var/www/data/ tumgis/3dcitydb-web-map \
+   -u "username;password!" \
+   -s "smb_shared;/var/www/data/;yes;no;yes;all;username;username;comment"
+```
+where:
++ The ports 139 and 445 are reserved for the Samba service. Do <b>not</b> change these numbers on Windows host machines.
++ In this example, the container data located in `/var/www/data` are mounted to `/home/docker/data` on the host machine using the [bind mount](https://docs.docker.com/storage/bind-mounts/) method.
++ The Samba service in this image is installed and configured based on [dperson/samba](https://github.com/dperson/samba). Optional Samba arguments can be provided in run-time, such as user credentials (parameter `-u`) and share information (parameter `-s`). These can be configured using the following syntax taken from [dperson/samba](https://github.com/dperson/samba):
+   ```
+   Options (fields in '[]' are optional, '<>' are required):
+       -h               
+                        This help
+       -c "<from:to>"   
+                        Setup character mapping for file/directory names
+                        required arg: "<from:to>" character mappings separated by ','
+       -g "<parameter>" 
+                        Provide global option for smb.conf
+                        required arg: "<parameter>" - IE: -g "log level = 2"
+       -i "<path>"      
+                        Import smbpassword
+                        required arg: "<path>" - full file path in container
+       -n               
+                        Start the 'nmbd' daemon to advertise the shares
+       -p               
+                        Set ownership and permissions on the shares
+       -r               
+                        Disable recycle bin for shares
+       -S               
+                        Disable SMB2 minimum version
+       -s "<name;/path>[;browse;readonly;guest;users;admins;writelist;comment]"
+                        Configure a share
+                        required arg: "<name>;</path>"
+                        <name> is how it's called for clients
+                        <path> path to share
+                        NOTE: for the default values, just leave blank
+                        [browsable] default:'yes' or 'no'
+                        [readonly] default:'yes' or 'no'
+                        [guest] allowed default:'yes' or 'no'
+                        [users] allowed default:'all' or list of allowed users
+                        [admins] allowed default:'none' or list of admin users
+                        [writelist] list of users that can write to a RO share
+                        [comment] description of share
+       -u "<username;password>[;ID;group]"       
+                        Add a user
+                        required arg: "<username>;<passwd>"
+                        <username> for user
+                        <password> for user
+                        [ID] for user
+                        [group] for user
+       -w "<workgroup>"       
+                        Configure the workgroup (domain) samba should use
+                        required arg: "<workgroup>"
+                        <workgroup> for samba
+       -W          
+                        Allow access wide symbolic links
+   ```
+
++ Once the container has been started and Samba is running, the shared directory can be accessed using the following commands:
+   + In Windows:
+   ```bash
+   net use <disk_drive>: \\<SERVER>\smb_shared
+   ```
+   where the `<disk_drive>` can be an arbitrary unoccupied letter (e.g. `R`) and `SERVER` is the name or IP address of the host machine, where the container is being hosted. The latter can be found using the command `ifconfig` or `ipconfig`.
+   
+   Once the connection has been established, open the shared folder in Windows Explorer and create a new text file `Test.txt`. This text file should now also be visible on the web client (e.g. `http://myDockerHost/data/`) as shown below:
+   <p align="center">
+    	<img src="/images/SambaTest.png" width="50%" />
+   </p>
+
+   + In Linux:
+   ```bash
+   # 1. Install Samba utils
+   sudo apt-get install cifs-utils
+   # 2. Create a local directory to mount shared data
+   mkdir local_smb_shared
+   # 3. Mount the shared data to this directory
+   sudo mount.cifs //<SERVER>/smb_shared \
+      local_smb_shared -o user=username
+   ```
+
+   + In MacOS:
+   ```bash
+   mount_smbfs //username@<SERVER>/smb_shared /local_smb_shared
+   ```
+
++ To unmount the shared directory from the local machine (source data will not be removed):
+   + In Windows: Enter
+   ```bash
+   net use <disk_drive>: /Delete
+   ```
+
+   + In Linux:
+   ```bash
+   umount //<SERVER>/smb_shared
+   ```
+
+   + In MacOS:
+   ```bash
+   umount /local_smb_shared
+   ```
+
+To disable Samba, simply remove the Samba parameters from the `docker run` command:
+```bash
+docker run -dit --name 3dwebmap-container -p 80:8000 \
+   -v /home/docker/data/:/var/www/data/ \
+tumgis/3dcitydb-web-map
+```
 
 ## How to build
 To build a 3DCityDB-Web-Map-Client Docker image from the Dockerfile in this repo you need to download the source code from this repo and run the [`docker build`](https://docs.docker.com/engine/reference/commandline/build/) command. Follow the step below to build a 3DCityDB-Web-Map-Client Docker image or use the [`build.sh`](https://github.com/tum-gis/3dcitydb-web-map-docker/blob/master/build.sh) script.
