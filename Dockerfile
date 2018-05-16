@@ -21,7 +21,9 @@ RUN set -x \
   && git clone -b "${webmapclient_version}" --depth 1 https://github.com/3dcitydb/3dcitydb-web-map.git /var/www \
   && cd /var/www \
   && rm -rf ./.git ./.gitignore ./LICENSE ./README.md ./build.xml \
-     ./node_modules ./server.js ./theme \  
+     ./node_modules ./server.js $(ls -1 --ignore=ajax-loader.gif --ignore=favicon.png \
+		--ignore=GPS_off.png --ignore=GPS_on.png --ignore=GPS_on_ori.png --ignore=GPS_on_pos_ori.png \
+		 ./theme/img) \  
   && mkdir -p /var/www/data \
   && apt-get purge -y --auto-remove $BUILD_PACKAGES \
   && rm -rf /var/lib/apt/lists/*
