@@ -1,0 +1,25 @@
+language: bash
+sudo: required
+
+services:
+  - docker
+
+env:
+  - version: v1.4.0
+  - version: master
+
+before_install: 
+  - docker build --build-arg webmapclient_version=${version} -t tumgis/3dcitydb-web-map:${version} .
+
+before_script:
+  - docker run --name webcl -d -p 8000:8000 tumgis/3dcitydb-web-map:${version}
+
+script:
+  - sleep 3  
+  - docker logs webcl
+  - curl "http://127.0.0.1:8000/3dwebclient/" -s | grep '<title>3DCityDB-Web-Map-Client</title>'
+  
+notifications:
+    slack: tum-gis:Z32lHXJDXaycOn4643NHSXaT
+    on_success: change
+    on_failure: always
