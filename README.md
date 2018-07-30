@@ -1,3 +1,4 @@
+[![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker)
 # 3D City Database Web Map Client Docker image
 This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web client)](https://github.com/3dcitydb/3dcitydb-web-map/) based on the official [Node.js Docker images](https://hub.docker.com/_/node/). To get the 3D web client Docker images visit the [tumgis/3dcitydb-web-map](https://hub.docker.com/r/tumgis/3dcitydb-web-map/) DockerHub page. To get things moving fast take a look the *Quick start* section.
 
