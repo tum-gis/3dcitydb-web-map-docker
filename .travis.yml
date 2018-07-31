@@ -20,6 +20,10 @@ script:
   - docker logs webcl
   - curl "http://127.0.0.1:8000/3dwebclient/" -s | grep '<title>3DCityDB-Web-Map-Client</title>'
   
+after_success:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push tumgis/3dcitydb-web-map:${version}
+  
 notifications:
     slack: tum-gis:Z32lHXJDXaycOn4643NHSXaT
     on_success: change
