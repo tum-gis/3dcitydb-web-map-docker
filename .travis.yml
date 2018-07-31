@@ -6,14 +6,17 @@ services:
 
 env:
   - version: v1.1.0
+    tag: v1.1.0
   - version: v1.4.0
+    tag: v1.4.0
   - version: master
+    tag: experimental
 
 before_install: 
-  - docker build --build-arg webmapclient_version=${version} -t tumgis/3dcitydb-web-map:${version} .
+  - docker build --build-arg webmapclient_version=${version} -t tumgis/3dcitydb-web-map:${tag} .
 
 before_script:
-  - docker run --name webcl -d -p 8000:8000 tumgis/3dcitydb-web-map:${version}
+  - docker run --name webcl -d -p 8000:8000 tumgis/3dcitydb-web-map:${tag}
 
 script:
   - sleep 3  
@@ -22,7 +25,7 @@ script:
   
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push tumgis/3dcitydb-web-map:${version}
+  - docker push tumgis/3dcitydb-web-map:${tag}
   
 notifications:
     slack: tum-gis:Z32lHXJDXaycOn4643NHSXaT
