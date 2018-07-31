@@ -5,6 +5,7 @@ services:
   - docker
 
 env:
+  - version: v1.1.0
   - version: v1.4.0
   - version: master
 
