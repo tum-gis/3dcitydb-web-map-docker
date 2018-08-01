@@ -98,11 +98,11 @@ To build a Docker image with a custom *Tomcat base image*, a specific *3DCityDB 
 
 | Parameter name          | Description                            | Default value     |
 |-------------------------|----------------------------------------|-------------------|
-| baseimage_tag           | Tag of the Node.js image to use. A list of all available tags is available [here](https://hub.docker.com/_/node/). | *9* |
-| webmapclient_version    | Version of the 3DCityDB-Web-Map-Client to build. Any branch name or tag from the [3DCityDB-Web-Map-Client GitHub](https://github.com/3dcitydb/3dcitydb-web-map/) repo can be used.            | *v1.4.0*           |
+| baseimage_tag           | Tag of the Node.js image to use. A list of all available tags is available [here](https://hub.docker.com/_/node/). | *10* |
+| webmapclient_version    | Version of the 3DCityDB-Web-Map-Client to build. Any branch name or tag from the [3DCityDB-Web-Map-Client GitHub](https://github.com/3dcitydb/3dcitydb-web-map/) repo can be used.            | *v1.6.0*           |
 
 > **Note:**  
-> The build process has been tested with the `node:9` base image and `v1.4.0` of the 3DCityDB-Web-Map-Client so far.
+> The build process has been tested with the `node:10` base image and `v1.6.0` of the 3DCityDB-Web-Map-Client so far.
  
 Build example:
 ```bash
