@@ -1,0 +1,8 @@
+#!/bin/bash
+
+files='html/ images/ package.json server.js'
+
+# copy files
+cp -r $files alpine/
+
+git add alpine/
