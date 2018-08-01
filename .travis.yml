@@ -5,21 +5,43 @@ services:
   - docker
 
 env:
+  # debian versions
   - webmapclient_version: v1.1.0
     baseimage_tag: 10
     tag: v1.1.0
+    dockerfile: .
   - webmapclient_version: v1.4.0
     baseimage_tag: 10
     tag: v1.4.0
+    dockerfile: .
   - webmapclient_version: v1.6.0
     baseimage_tag: 10
     tag: v1.6.0
+    dockerfile: .
   - webmapclient_version: master
     baseimage_tag: 10
     tag: experimental
+    dockerfile: .
+  # alpine versions
+  - webmapclient_version: v1.1.0
+    baseimage_tag: 10-alpine
+    tag: v1.1.0-alpine
+    dockerfile: alpine
+  - webmapclient_version: v1.4.0
+    baseimage_tag: 10-alpine
+    tag: v1.4.0-alpine
+    dockerfile: alpine
+  - webmapclient_version: v1.6.0
+    baseimage_tag: 10-alpine
+    tag: v1.6.0-alpine
+    dockerfile: alpine
+  - webmapclient_version: master
+    baseimage_tag: 10-alpine
+    tag: experimental-alpine
+    dockerfile: alpine
 
 before_install: 
-  - docker build --build-arg baseimage_tag=${baseimage_tag} --build-arg webmapclient_webmapclient_version=${webmapclient_version} -t tumgis/3dcitydb-web-map:${tag} .
+  - docker build --build-arg baseimage_tag=${baseimage_tag} --build-arg webmapclient_webmapclient_version=${webmapclient_version} -t tumgis/3dcitydb-web-map:${tag} ${dockerfile}
 
 before_script:
   - docker run --name webcl -d -p 8000:8000 tumgis/3dcitydb-web-map:${tag}
