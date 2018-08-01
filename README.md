@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker.svg?branch=master)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker)
+[![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker) [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/devel.svg?label=devel)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker)
 # 3D City Database Web Map Client Docker image
 This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web client)](https://github.com/3dcitydb/3dcitydb-web-map/) based on the official [Node.js Docker images](https://hub.docker.com/_/node/). To get the 3D web client Docker images visit the [tumgis/3dcitydb-web-map](https://hub.docker.com/r/tumgis/3dcitydb-web-map/) DockerHub page. To get things moving fast take a look the *Quick start* section.
 
@@ -6,10 +6,10 @@ This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web
 * *Landing page* and *data listing* for convenient 3D web client project creation
 
 #### Image versions/tags
-* [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker) - Latest stable version based on latest version of the 3D web client. Built from [master](https://github.com/tum-gis/3dcitydb-web-map-docker/tree/master) branch.
-* [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/devel.svg?label=devel)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker) - Development version containing latest features. Built from [devel](https://github.com/3dcitydb/3dcitydb-web-map/tree/devel) branch.
-* [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/experimental.svg?label=experimental)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker) - Development version containing latest features. Built from [experimental](https://github.com/3dcitydb/3dcitydb-web-map/tree/experimental) branch. The latest commit of the [3DCityDB Web-Map-Client Github master branch](https://github.com/3dcitydb/3dcitydb-web-map/tree/master) is used for this build.
-* [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/v1.1.0.svg?label=v1.1.0)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker), [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/v1.4.0.svg?label=v1.4.0)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker), [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/v1.6.0.svg?label=v1.6.0)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker) - Same content as **latest** image, but built with a specific version (**vX.X.X**) of the 3DCityDB Web-Map-Client. Built from the branches named like the versions.
+* **latest** - Latest stable version based on latest version of the 3D web client. Built from [master](https://github.com/tum-gis/3dcitydb-web-map-docker/tree/master) branch.
+* **devel** - Development version containing latest features. Built from [devel](https://github.com/3dcitydb/3dcitydb-web-map/tree/devel) branch.
+* **experimental** - Development version containing latest features. Built from the latest commit of the [3DCityDB Web-Map-Client Github master branch](https://github.com/3dcitydb/3dcitydb-web-map/tree/master).
+* **v1.1.0**, **v1.4.0**, **v1.6.0** - Same content as **latest** image, but built with a specific version (**vX.X.X**) of the 3DCityDB Web-Map-Client.
 
 Use `docker pull tumgis/3dcitydb-web-map:TAG` to download the latest version of the image with the specified `TAG` to your system. For example: `docker pull tumgis/3dcitydb-web-map:v1.4.0`.
 
