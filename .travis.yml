@@ -9,6 +9,8 @@ env:
     tag: v1.1.0
   - version: v1.4.0
     tag: v1.4.0
+  - version: v1.6.0
+    tag: v1.6.0
   - version: master
     tag: experimental
 
