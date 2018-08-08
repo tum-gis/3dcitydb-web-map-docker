@@ -38,7 +38,6 @@ RUN set -x \
 RUN set -x \
   && chown -R node:node /var/www/
 
-VOLUME /var/www/
 USER node
 EXPOSE 8000
 CMD [ "node", "server.js", "--public"]
