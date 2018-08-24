@@ -10,7 +10,7 @@ This repo contains a Dockerfile for the [3D City Database Web-Map-Client (3D web
 
 #### Image versions/tags
 
-A list of all available tag is available on DockerHub [tumgis/3dcitydb-web-map/tags](https://hub.docker.com/r/tumgis/3dcitydb-web-map/tags/).
+A list of all image tags is available on DockerHub [tumgis/3dcitydb-web-map/tags](https://hub.docker.com/r/tumgis/3dcitydb-web-map/tags/).
 The image tags are compose of several tokens, that are explained below:
 
 * **latest** - Latest stable version based on latest stable release of the 3D web client. Built from [master](https://github.com/tum-gis/3dcitydb-web-map-docker/tree/master) branch.
