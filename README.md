@@ -17,9 +17,9 @@ The image tags are compose of several tokens, that are explained below:
 * **devel** - Development version containing latest features. Built from [devel](https://github.com/3dcitydb/3dcitydb-web-map/tree/devel) branch.
 * **alpine** - Lightweight image version based on [Alpine Linux](https://alpinelinux.org/). All other images use the Debian operating system.
 * **experimental** - This version is built from the latest commit of the [3DCityDB Web-Map-Client Github master branch](https://github.com/3dcitydb/3dcitydb-web-map/tree/master).
-* **v1.1.0**, **v1.4.0**, **v1.6.0**, **v1.6.1**, **v1.6.2**, **v1.7.1** -Built with a specific version (**vX.X.X**) of the 3DCityDB Web-Map-Client.
+* **v1.1.0**, **v1.4.0**, **v1.6.0**, **v1.6.1**, **v1.6.2**, **v1.7.1**, **v1.8.0** -Built with a specific version (**vX.X.X**) of the 3DCityDB Web-Map-Client.
 
-Use `docker pull tumgis/3dcitydb-web-map:TAG` to download the latest version of the image with the specified `TAG` to your system. For example: `docker pull tumgis/3dcitydb-web-map:v1.6.1`.
+Use `docker pull tumgis/3dcitydb-web-map:TAG` to download the latest version of the image with the specified `TAG` to your system. For example: `docker pull tumgis/3dcitydb-web-map:v1.7.1`.
 
 #### More 3DCityDB Docker Images
 
@@ -120,10 +120,10 @@ To build a Docker image with a custom *Tomcat base image*, a specific *3DCityDB 
 | Parameter name          | Description                            | Default value     |
 |-------------------------|----------------------------------------|-------------------|
 | baseimage_tag           | Tag of the Node.js image to use. A list of all available tags is available [here](https://hub.docker.com/_/node/). | *10* |
-| webmapclient_version    | Version of the 3DCityDB-Web-Map-Client to build. Any branch name or tag from the [3DCityDB-Web-Map-Client GitHub](https://github.com/3dcitydb/3dcitydb-web-map/) repo can be used.            | *v1.6.0*           |
+| webmapclient_version    | Version of the 3DCityDB-Web-Map-Client to build. Any branch name or tag from the [3DCityDB-Web-Map-Client GitHub](https://github.com/3dcitydb/3dcitydb-web-map/) repo can be used.            | *v1.7.1*           |
 
 > **Note:**  
-> The build process has been tested with the `node:10` base image and `v1.6.0` of the 3DCityDB-Web-Map-Client so far.
+> The build process has been tested with the `node:10` base image and `v1.7.1` of the 3DCityDB-Web-Map-Client so far.
 
 Build example:
 
