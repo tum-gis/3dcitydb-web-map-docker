@@ -41,8 +41,14 @@ env:
       dockerfile: .
     - webmapclient_version: v1.8.1
       baseimage_tag: 10
-      tag: v1.8.1,latest
+      tag: v1.8.1
       dockerfile: .
+      # latest
+    - webmapclient_version: v1.8.2
+      baseimage_tag: 10
+      tag: v1.8.2,latest
+      dockerfile: .
+      # experimental
     - webmapclient_version: master
       baseimage_tag: 10
       tag: experimental
@@ -78,8 +84,14 @@ env:
       dockerfile: alpine
     - webmapclient_version: v1.8.1
       baseimage_tag: 10-alpine
-      tag: v1.8.1,latest
+      tag: v1.8.1
       dockerfile: alpine
+      # latest
+    - webmapclient_version: v1.8.2
+      baseimage_tag: 10-alpine
+      tag: v1.8.2,latest
+      dockerfile: alpine
+      # experimental
     - webmapclient_version: master
       baseimage_tag: 10-alpine
       tag: experimental
