@@ -1,118 +1,106 @@
-language: bash
-sudo: required
-
+os: linux
+dist: bionic
+language: shell
 services:
-  - docker
-
+- docker
 env:
   global:
-    - repo_name=tumgis
-    - image_name=3dcitydb-web-map
-
+  - repo_name=tumgis
+  - image_name=3dcitydb-web-map
   matrix:
-    # debian versions
-    - webmapclient_version: v1.1.0
-      baseimage_tag: 10
-      tag: v1.1.0
-      dockerfile: .
-    - webmapclient_version: v1.4.0
-      baseimage_tag: 10
-      tag: v1.4.0
-      dockerfile: .
-    - webmapclient_version: v1.6.0
-      baseimage_tag: 10
-      tag: v1.6.0
-      dockerfile: .
-    - webmapclient_version: v1.6.1
-      baseimage_tag: 10
-      tag: v1.6.1
-      dockerfile: .
-    - webmapclient_version: v1.6.2
-      baseimage_tag: 10
-      tag: v1.6.2
-      dockerfile: .
-    - webmapclient_version: v1.7.1
-      baseimage_tag: 10
-      tag: v1.7.1
-      dockerfile: .
-    - webmapclient_version: v1.8.0
-      baseimage_tag: 10
-      tag: v1.8.0
-      dockerfile: .
-    - webmapclient_version: v1.8.1
-      baseimage_tag: 10
-      tag: v1.8.1
-      dockerfile: .
-      # latest
-    - webmapclient_version: v1.8.2
-      baseimage_tag: 10
-      tag: v1.8.2,latest
-      dockerfile: .
-      # experimental
-    - webmapclient_version: master
-      baseimage_tag: 10
-      tag: experimental
-      dockerfile: .
-    # alpine versions
-    - webmapclient_version: v1.1.0
-      baseimage_tag: 10-alpine
-      tag: v1.1.0
-      dockerfile: alpine
-    - webmapclient_version: v1.4.0
-      baseimage_tag: 10-alpine
-      tag: v1.4.0
-      dockerfile: alpine
-    - webmapclient_version: v1.6.0
-      baseimage_tag: 10-alpine
-      tag: v1.6.0
-      dockerfile: alpine
-    - webmapclient_version: v1.6.1
-      baseimage_tag: 10-alpine
-      tag: v1.6.1
-      dockerfile: alpine
-    - webmapclient_version: v1.6.2
-      baseimage_tag: 10-alpine
-      tag: v1.6.2
-      dockerfile: alpine
-    - webmapclient_version: v1.7.1
-      baseimage_tag: 10-alpine
-      tag: v1.7.1
-      dockerfile: alpine
-    - webmapclient_version: v1.8.0
-      baseimage_tag: 10-alpine
-      tag: v1.8.0
-      dockerfile: alpine
-    - webmapclient_version: v1.8.1
-      baseimage_tag: 10-alpine
-      tag: v1.8.1
-      dockerfile: alpine
-      # latest
-    - webmapclient_version: v1.8.2
-      baseimage_tag: 10-alpine
-      tag: v1.8.2,latest
-      dockerfile: alpine
-      # experimental
-    - webmapclient_version: master
-      baseimage_tag: 10-alpine
-      tag: experimental
-      dockerfile: alpine
-
+  - webmapclient_version: v1.1.0
+    baseimage_tag: 10
+    tag: v1.1.0
+    dockerfile: "."
+  - webmapclient_version: v1.4.0
+    baseimage_tag: 10
+    tag: v1.4.0
+    dockerfile: "."
+  - webmapclient_version: v1.6.0
+    baseimage_tag: 10
+    tag: v1.6.0
+    dockerfile: "."
+  - webmapclient_version: v1.6.1
+    baseimage_tag: 10
+    tag: v1.6.1
+    dockerfile: "."
+  - webmapclient_version: v1.6.2
+    baseimage_tag: 10
+    tag: v1.6.2
+    dockerfile: "."
+  - webmapclient_version: v1.7.1
+    baseimage_tag: 10
+    tag: v1.7.1
+    dockerfile: "."
+  - webmapclient_version: v1.8.0
+    baseimage_tag: 10
+    tag: v1.8.0
+    dockerfile: "."
+  - webmapclient_version: v1.8.1
+    baseimage_tag: 10
+    tag: v1.8.1
+    dockerfile: "."
+  - webmapclient_version: v1.8.2
+    baseimage_tag: 10
+    tag: v1.8.2,latest
+    dockerfile: "."
+  - webmapclient_version: master
+    baseimage_tag: 10
+    tag: experimental
+    dockerfile: "."
+  - webmapclient_version: v1.1.0
+    baseimage_tag: 10-alpine
+    tag: v1.1.0
+    dockerfile: alpine
+  - webmapclient_version: v1.4.0
+    baseimage_tag: 10-alpine
+    tag: v1.4.0
+    dockerfile: alpine
+  - webmapclient_version: v1.6.0
+    baseimage_tag: 10-alpine
+    tag: v1.6.0
+    dockerfile: alpine
+  - webmapclient_version: v1.6.1
+    baseimage_tag: 10-alpine
+    tag: v1.6.1
+    dockerfile: alpine
+  - webmapclient_version: v1.6.2
+    baseimage_tag: 10-alpine
+    tag: v1.6.2
+    dockerfile: alpine
+  - webmapclient_version: v1.7.1
+    baseimage_tag: 10-alpine
+    tag: v1.7.1
+    dockerfile: alpine
+  - webmapclient_version: v1.8.0
+    baseimage_tag: 10-alpine
+    tag: v1.8.0
+    dockerfile: alpine
+  - webmapclient_version: v1.8.1
+    baseimage_tag: 10-alpine
+    tag: v1.8.1
+    dockerfile: alpine
+  - webmapclient_version: v1.8.2
+    baseimage_tag: 10-alpine
+    tag: v1.8.2,latest
+    dockerfile: alpine
+  - webmapclient_version: master
+    baseimage_tag: 10-alpine
+    tag: experimental
+    dockerfile: alpine
 before_script:
-  - chmod +x ./travis.sh
-  - ./travis.sh build
-  - ./travis.sh runContainer
-
+- chmod +x ./travis.sh
+- "./travis.sh build"
+- "./travis.sh runContainer"
 script:
-  - sleep 3  
-  - docker logs webcl
-  - curl "http://127.0.0.1:8000/3dwebclient/" -s | grep '<title>3DCityDB-Web-Map-Client</title>'  
-  - ./travis.sh deploy
-
+- sleep 3
+- docker logs webcl
+- curl "http://127.0.0.1:8000/3dwebclient/" -s | grep '<title>3DCityDB-Web-Map-Client</title>'
+- "./travis.sh deploy"
 after_script:
-  - ./travis.sh cleanup
-
+- "./travis.sh cleanup"
 notifications:
-    slack: tum-gis:Z32lHXJDXaycOn4643NHSXaT
-    on_success: change
-    on_failure: always
-  
+  slack:
+    secure: Ul6Uq9armHv+oQJrpPiGhYo+1im7HaLt1qbLcosZiioRTgZt+GIl67+dw/6NOPHIK8kyuFHBGwbhf7PojHwONG3kici/vVpWbA1tAkMi8nY52IicjhJE2Zg9ff96tJbbznER9+U6WxTneWO1eqHtyN6acjo+/49h9kRoakvSRkof9HTeEuF/B8PtGthVoCfEXhH8q/HlzzfTEkeqY9Lx+Esffq4yYRfbvfYcH9z3n2ZR8i31w6imKvIbecOsNSJj+bukKML8S4puHPTbyq1eYmYipJh2ozRA/SxIbzlzr3b78Di1V2kaNL2c6nBL2NiHv/OijBo72dY8BdVG8pwM5OgRQF02uGO6gywmlYeHIiVsLsufW900a9h5sn7BGulimiO/HIIzT8yuWXmYmhI7tPcZs5Zu8eDYy7Khi9awrAJh6bEASWM9jmv59t6vvc7s7Rm8rYoyU2DF0jNY4xBFuw2NNSop55HpG2ostNbKFNpYU3cf6Gn1eTbX1rFI9v7HvfYuPhsadBWw6SUNdUtgSrvaLItmqgDvklPjCZmimLULqvdvzaKQMkACpjH4PWTIUiJfJzebAskUQyWom5iADNR/NiyGlhC/yM8Dwq6YM9Do9NowZCNO8quCTbdIMhmIi+FsdbPiyE+t2Kyh0O9fNQON0ebik4YG2N6ScHPuEEQ=
+  on_success: change
+  on_failure: always
