@@ -9,99 +9,99 @@ env:
   - image_name=3dcitydb-web-map
   matrix:
   - webmapclient_version: v1.1.0
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.1.0
     dockerfile: "."
   - webmapclient_version: v1.4.0
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.4.0
     dockerfile: "."
   - webmapclient_version: v1.6.0
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.6.0
     dockerfile: "."
   - webmapclient_version: v1.6.1
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.6.1
     dockerfile: "."
   - webmapclient_version: v1.6.2
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.6.2
     dockerfile: "."
   - webmapclient_version: v1.7.1
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.7.1
     dockerfile: "."
   - webmapclient_version: v1.8.0
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.8.0
     dockerfile: "."
   - webmapclient_version: v1.8.1
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.8.1
     dockerfile: "."
   - webmapclient_version: v1.8.2
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.8.2
     dockerfile: "."
   - webmapclient_version: v1.8.3
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.8.3
     dockerfile: "."
   - webmapclient_version: v1.9.0
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: v1.9.0,latest
     dockerfile: "."
   - webmapclient_version: master
-    baseimage_tag: 10
+    baseimage_tag: 14
     tag: experimental
     dockerfile: "."
   - webmapclient_version: v1.1.0
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.1.0
     dockerfile: alpine
   - webmapclient_version: v1.4.0
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.4.0
     dockerfile: alpine
   - webmapclient_version: v1.6.0
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.6.0
     dockerfile: alpine
   - webmapclient_version: v1.6.1
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.6.1
     dockerfile: alpine
   - webmapclient_version: v1.6.2
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.6.2
     dockerfile: alpine
   - webmapclient_version: v1.7.1
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.7.1
     dockerfile: alpine
   - webmapclient_version: v1.8.0
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.8.0
     dockerfile: alpine
   - webmapclient_version: v1.8.1
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.8.1
     dockerfile: alpine
   - webmapclient_version: v1.8.2
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.8.2,latest
     dockerfile: alpine
   - webmapclient_version: v1.8.3
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.8.3
     dockerfile: alpine
   - webmapclient_version: v1.9.0
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: v1.9.0,latest
     dockerfile: alpine
   - webmapclient_version: master
-    baseimage_tag: 10-alpine
+    baseimage_tag: 14-alpine
     tag: experimental
     dockerfile: alpine
 before_script:
