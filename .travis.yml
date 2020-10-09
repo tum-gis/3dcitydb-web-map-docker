@@ -43,6 +43,7 @@ env:
   - webmapclient_version: v1.8.2
     baseimage_tag: 10
     tag: v1.8.2
+    dockerfile: "."
   - webmapclient_version: v1.8.3
     baseimage_tag: 10
     tag: v1.8.3
