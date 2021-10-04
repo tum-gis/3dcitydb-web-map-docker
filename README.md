@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://travis-ci.com/tum-gis/3dcitydb-web-map-docker) [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/devel.svg?label=devel)](https://travis-ci.com/tum-gis/3dcitydb-web-map-docker)
+[![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://app.travis-ci.com/github/tum-gis/3dcitydb-web-map-docker) [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/devel.svg?label=devel)](https://app.travis-ci.com/github/tum-gis/3dcitydb-web-map-docker)
 
 # 3D City Database Web Map Client Docker image
 
