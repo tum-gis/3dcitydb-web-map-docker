@@ -1,4 +1,4 @@
-[![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker) [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/devel.svg?label=devel)](https://travis-ci.org/tum-gis/3dcitydb-web-map-docker)
+[![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/master.svg?label=master)](https://travis-ci.com/tum-gis/3dcitydb-web-map-docker) [![Build Status](https://img.shields.io/travis/tum-gis/3dcitydb-web-map-docker/devel.svg?label=devel)](https://travis-ci.com/tum-gis/3dcitydb-web-map-docker)
 
 # 3D City Database Web Map Client Docker image
 
@@ -17,7 +17,7 @@ The image tags are compose of several tokens, that are explained below:
 * **devel** - Development version containing latest features. Built from [devel](https://github.com/3dcitydb/3dcitydb-web-map/tree/devel) branch.
 * **alpine** - Lightweight image version based on [Alpine Linux](https://alpinelinux.org/). All other images use the Debian operating system. The Alpine images for specific versions are named e.g. **alpine-v1.9.0**.
 * **experimental** - This version is built from the latest commit of the [3DCityDB Web-Map-Client Github master branch](https://github.com/3dcitydb/3dcitydb-web-map/tree/master).
-* **v1.1.0**, **v1.4.0**, **v1.6.0**, **v1.6.1**, **v1.6.2**, **v1.7.1**, **v1.8.0**, **v1.8.1**, **v1.8.2**, **v1.8.3**, **v1.9.0** -Built with a specific version (**vX.X.X**) of the 3DCityDB Web-Map-Client.
+* **v1.1.0**, **v1.4.0**, **v1.6.0**, **v1.6.1**, **v1.6.2**, **v1.7.1**, **v1.8.0**, **v1.8.1**, **v1.8.2**, **v1.8.3**, **v1.9.0**, **v1.9.1** -Built with a specific version (**vX.X.X**) of the 3DCityDB Web-Map-Client.
 
 Use `docker pull tumgis/3dcitydb-web-map:TAG` to download the latest version of the image with the specified `TAG` to your system. For example: `docker pull tumgis/3dcitydb-web-map:v1.7.1`.
 
@@ -46,9 +46,9 @@ The key features and functionalities of the 3DCityDB-Web-Map-Client is summarize
 * Support for collaborative creation and sharing of the workspace of the 3DCityDB-Web-Map-Client by means of generating a scene link including information about the current camera perspective, activation status of the shadow visualization, parameters of the current loaded data layers etc.
 
 ![3DCityDB](https://www.3dcitydb.org/3dcitydb/fileadmin/default/templates/images/logo.jpg "3DCityDB logo")
-> [3DCityDB Official Homepage](https://www.3dcitydb.net/)  
-> [3DCityDB Github](https://github.com/3dcitydb)  
-> [CityGML](https://www.citygml.org/)  
+> [3DCityDB Official Homepage](https://www.3dcitydb.net/)
+> [3DCityDB Github](https://github.com/3dcitydb)
+> [CityGML](https://www.citygml.org/)
 > [3DCityDB and CityGML Hands-on Tutorial](https://www.gis.bgu.tum.de/en/projects/3dcitydb/#c1425)
 
 ## Quick start
@@ -63,7 +63,7 @@ This section describes how to get a 3DCityDB-Web-Map-Client container running as
     docker run -dit --name 3dwebmap-container -p 80:8000 tumgis/3dcitydb-web-map
     ```
 
-3. As soon as the container has started, the 3D web client will be available on your Docker host with any common Web Browser. If you run the container locally with above port settings, the landing page is available here:  
+3. As soon as the container has started, the 3D web client will be available on your Docker host with any common Web Browser. If you run the container locally with above port settings, the landing page is available here:
   [http://localhost/](http://localhost/) or [http://127.0.0.1/](http://127.0.0.1/)
 
 ## Hosting data AND the 3D web client
@@ -92,7 +92,7 @@ docker run -dit --name 3dwebmap-container -p 80:8000 \
 ```
 
 > **Note:**
-> In the example above long commands are broken to several lines for readability using the Bash (`\`) or CMD (`^`) line continuation.  
+> In the example above long commands are broken to several lines for readability using the Bash (`\`) or CMD (`^`) line continuation.
 
 The data is now available in the data listing (e.g. `http://myDockerHost/data/`). Use your Browser's *Copy Link Address* feature to copy the URLs required in the 3D web client.
 
@@ -122,7 +122,7 @@ To build a Docker image with a custom *Tomcat base image*, a specific *3DCityDB 
 | baseimage_tag           | Tag of the Node.js image to use. A list of all available tags is available [here](https://hub.docker.com/_/node/). | *10* |
 | webmapclient_version    | Version of the 3DCityDB-Web-Map-Client to build. Any branch name or tag from the [3DCityDB-Web-Map-Client GitHub](https://github.com/3dcitydb/3dcitydb-web-map/) repo can be used.            | *v1.7.1*           |
 
-> **Note:**  
+> **Note:**
 > The build process has been tested with the `node:10` base image and `v1.7.1` of the 3DCityDB-Web-Map-Client so far.
 
 Build example:
