@@ -3,7 +3,7 @@
 #   GitHub              https://github.com/3dcitydb/3dcitydb-web-map
 ###############################################################################
 # Base image
-ARG baseimage_tag='10-alpine'
+ARG baseimage_tag='21-alpine'
 FROM node:${baseimage_tag}
 # Maintainer ##################################################################
 #   Bruno Willenborg
@@ -14,7 +14,7 @@ FROM node:${baseimage_tag}
 MAINTAINER Bruno Willenborg, Chair of Geoinformatics, Technical University of Munich (TUM) <b.willenborg@tum.de>
 
 # Setup 3DCityDB Web Map Client ###############################################
-ARG webmapclient_version='v1.6.0'
+ARG webmapclient_version='v1.9.1'
 RUN set -x && \
   apk update && \
   apk add --no-cache --virtual .fetch-deps openssl git && \
@@ -22,11 +22,11 @@ RUN set -x && \
     https://github.com/3dcitydb/3dcitydb-web-map.git /var/www && \
   cd /var/www && \
   rm -rf .git .gitignore LICENSE README.md build.xml \
-    node_modules server.js && \  
+    node_modules server.js && \
   mkdir -p /var/www/data && \
   apk del .fetch-deps
 
-WORKDIR /var/www/  
+WORKDIR /var/www/
 COPY package.json ./
 COPY html/* ./
 COPY server.js ./

@@ -3,7 +3,7 @@
 #   GitHub              https://github.com/3dcitydb/3dcitydb-web-map
 ###############################################################################
 # Base image
-ARG baseimage_tag='10'
+ARG baseimage_tag='21-bookworm'
 FROM "node:${baseimage_tag}"
 # Maintainer ##################################################################
 #   Bruno Willenborg
@@ -11,10 +11,10 @@ FROM "node:${baseimage_tag}"
 #   Department of Civil, Geo and Environmental Engineering
 #   Technical University of Munich (TUM)
 #   <b.willenborg@tum.de>
-MAINTAINER Bruno Willenborg, Chair of Geoinformatics, Technical University of Munich (TUM) <b.willenborg@tum.de>
+# MAINTAINER Bruno Willenborg, Chair of Geoinformatics, Technical University of Munich (TUM) <b.willenborg@tum.de>
 
 # Setup 3DCityDB Web Map Client ###############################################
-ARG webmapclient_version='v1.6.0'
+ARG webmapclient_version='v1.9.1'
 RUN set -x \
   && BUILD_PACKAGES='ca-certificates git' \
   && apt-get update && apt-get install -y --no-install-recommends $BUILD_PACKAGES \
@@ -23,12 +23,12 @@ RUN set -x \
   && rm -rf ./.git ./.gitignore ./LICENSE ./README.md ./build.xml \
      ./node_modules ./server.js $(ls -1 --ignore=ajax-loader.gif --ignore=favicon.png \
 		--ignore=GPS_off.png --ignore=GPS_on.png --ignore=GPS_on_ori.png --ignore=GPS_on_pos_ori.png \
-		 ./theme/img) \  
+		 ./theme/img) \
   && mkdir -p /var/www/data \
   && apt-get purge -y --auto-remove $BUILD_PACKAGES \
   && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /var/www/  
+WORKDIR /var/www/
 COPY package.json ./
 COPY html/* ./
 COPY server.js ./
