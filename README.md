@@ -135,6 +135,10 @@ docker build \
 ```
 
 ```bash
+# Change directory to alpine
+cd alpine
+
+# Build using the dockerfile in the directory
 docker build \
     --build-arg "baseimage_tag=21-alpine" \
     --build-arg "webmapclient_version=v2.0.0" \
