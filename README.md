@@ -133,3 +133,16 @@ docker build \
     --build-arg "webmapclient_version=master" \
   -t tumgis/3dcitydb-web-map:9-slim-master .
 ```
+
+```bash
+docker build \
+    --build-arg "baseimage_tag=21-alpine" \
+    --build-arg "webmapclient_version=v2.0.0" \
+  -t tumgis/3dcitydb-web-map:alpine-v2.0.0 .
+```
+
+Push to DockerHub:
+
+```bash
+docker push tumgis/3dcitydb-web-map:alpine-v2.0.0
+```
